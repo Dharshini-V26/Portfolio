@@ -2656,51 +2656,100 @@ footer p:last-child {
    RESPONSIVE DESIGN
    ======================================== */
 
+/* ----------------------------------------
+   Responsive: Website (desktop) & Mobile
+   - Improve desktop layout spacing
+   - Provide an elegant, touch-friendly mobile view
+   ---------------------------------------- */
+
 @media (max-width: 1024px) {
-    h1 { font-size: 3.5rem; }
-    .section-title { font-size: 2.5rem; }
-    .about-wrapper { gap: 2rem; }
-    .skills-classification { gap: 2rem; }
+    /* Slightly smaller headings for tablet */
+    h1 { font-size: 3.2rem; }
+    .section-title { font-size: 2.4rem; }
+    .about-wrapper { gap: 1.8rem; }
+    .skills-classification { gap: 1.8rem; }
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
     .projects-grid { grid-template-columns: repeat(2, 1fr); }
     .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* Make cards slightly lighter on tablets */
+    .skill-card, .project-card, .certificate-card, .achievement-card {
+        box-shadow: 0 12px 34px rgba(0,0,0,0.18);
+        transform: none;
+    }
 }
 
 @media (max-width: 768px) {
-    nav { padding: 1rem; }
+    /* Navigation becomes compact/hamburger */
+    nav { padding: 0.9rem 1rem; }
     nav ul { display: none; gap: 0; }
-    nav ul.active { display: flex; }
+    nav ul.active { display: flex; flex-direction: column; gap: 1rem; padding: 1rem; }
     .menu-toggle { display: flex; }
-    
-    h1 { font-size: 2.5rem; }
-    .subtitle { font-size: 1.1rem; }
-    .section-title { font-size: 2rem; }
-    
+
+    /* Hero scales down for mobile elegance */
+    .hero { padding: 1.5rem; margin-top: 90px; }
+    .hero-avatar { width: 120px; height: 120px; font-size: 3rem; }
+    h1 { font-size: 2.2rem; }
+    .subtitle { font-size: 1rem; }
+    .section-title { font-size: 1.9rem; }
+
+    /* Stack major columns for single-column flow */
     .about-wrapper { grid-template-columns: 1fr; }
     .skills-classification { grid-template-columns: 1fr; }
-    .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .projects-grid { grid-template-columns: 1fr; }
     .achievements-grid { grid-template-columns: 1fr; }
-    
-    .cta-buttons { flex-direction: column; }
-    .btn { width: 100%; justify-content: center; }
-    
-    .contact-container { grid-template-columns: 1fr; gap: 2.5rem; }
-    .form-box { padding: 2.5rem; }
-    .contact-header h2 { font-size: 2.2rem; }
-    .form-group { margin-bottom: 2rem; }
-    .form-group input,
-    .form-group textarea { padding: 0.9rem 0.3rem; }
+
+    /* Touch-friendly interactions */
+    .btn, .btn-lg, .contact-method-card, .project-link { width: 100%; }
+    .btn { padding: 0.85rem 1rem; }
+
+    /* Reduce heavy effects for performance */
+    .hero-avatar, .skill-card, .project-card, .certificate-card, .achievement-card, .timeline-content {
+        animation: none !important;
+        transition: transform 0.18s ease !important;
+    }
+
+    /* Larger form controls for mobile */
+    .contact-container { grid-template-columns: 1fr; gap: 2rem; }
+    .form-box { padding: 2rem; }
+    .contact-header h2 { font-size: 1.9rem; }
+    .form-group { margin-bottom: 1.4rem; }
+    .form-group input, .form-group textarea { padding: 0.9rem 0.6rem; }
+
+    /* Ensure pointer visibility on touch devices */
+    body, button, a, input, textarea { cursor: auto !important; }
 }
 
 @media (max-width: 480px) {
-    .hero { padding: 1rem; margin-top: 100px; }
-    h1 { font-size: 1.8rem; }
-    .section { padding: 2rem 1rem; }
-    .section-title { font-size: 1.5rem; }
-    
-    .about-quick-stats { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    /* Compact, elegant mobile view */
+    .hero { padding: 1rem; margin-top: 72px; }
+    .hero-avatar { width: 96px; height: 96px; }
+    h1 { font-size: 1.6rem; }
+    .subtitle { font-size: 0.95rem; }
+    .section { padding: 1.6rem 0.9rem; }
+    .section-title { font-size: 1.4rem; }
+
+    .about-quick-stats { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
     .skills-grid { grid-template-columns: 1fr; }
-    .social-links { flex-direction: column; }
-    .social-link { width: 100%; justify-content: center; }
+
+    /* Simplify backgrounds and reduce visual clutter */
+    body { background: linear-gradient(180deg, #0a0e27 0%, #101227 100%); }
+    .form-box, .skill-card, .project-card, .certificate-card { border-radius: 12px; padding: 1.25rem; }
+
+    /* Make social links and CTAs easy to tap */
+    .cta-buttons { flex-direction: column; gap: 0.75rem; }
+    .btn, .btn-lg { border-radius: 12px; }
+
+    /* Keep animations minimal on small screens */
+    * { will-change: auto !important; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
 }
